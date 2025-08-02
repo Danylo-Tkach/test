@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Головна | Маневицький краєзнавчий музей</title>
+    <title>Новини | Маневицький краєзнавчий музей</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/news.css">
     <link rel="icon" href="images/icon.png">
 </head>
 <body>
@@ -16,45 +17,44 @@
             музей
         </h2>
         <ul class="menu-header">
-            <li style="text-decoration: underline;"><a href="index.html">Головна</a></li>
+            <li><a href="index.html">Головна</a></li>
             <li><a href="about us.html">Про музей</a></li>
             <li><a href="test.html">Вікторина</a></li>
             <li><a href="boat.html">Човен-довбанка</a></li>
             <li><a href="register.html">Забронювати екскурсію</a></li>
-            <li><a href="news.html">Новини</a></li>
+            <li style="text-decoration: underline;"><a href="news.html">Новини</a></li>
         </ul>
     </header>
     <br>
     <ul class="menu-phone">
-        <li style="text-decoration: underline;"><a href="index.html">Головна</a></li>
+        <li><a href="index.html">Головна</a></li>
         <li><a href="about us.html">Про музей</a></li>
         <li><a href="test.html">Вікторина</a></li>
         <li><a href="boat.html">Човен-довбанка</a></li>
         <li><a href="register.html">Забронювати екскурсію</a></li>
-        <li><a href="news.html">Новини</a></li>
+        <li style="text-decoration: underline;"><a href="news.html">Новини</a></li>
      </ul>
     <br>
     <main>
-        <div class="slider">
-            <div class="slide active"><img src="images/img 1.png" alt="Слайд 1"></div>
-            <div class="slide"><img src="images/img 2.png" alt="Слайд 2"></div>
-            <div class="slide"><img src="images/img 3.png" alt="Слайд 3"></div>
-            <div class="slide"><img src="images/img 4.png" alt="Слайд 4"></div>
-            <!--<div class="slide"><img src="images/img 5.jpg" alt="Слайд 5"></div>-->
-        </div>
-        <br><br>
-        <h2 class="h2-ul">Графік роботи</h2>
-        <h3 id="DateText">Відчинено</h3>
-        <script src="script.js"></script>
-        <ul class="timetable">
-            <li>Понеділок: 09:00 – 18:00 (13:00 - 14:00 обід)</li>
-            <li>Вівторок: 09:00 – 18:00 (13:00 - 14:00 обід)</li>
-            <li>Середа: 09:00 – 18:00 (13:00 - 14:00 обід)</li>
-            <li>Четвер: 09:00 – 18:00 (13:00 - 14:00 обід)</li>
-            <li>П'ятниця: 09:00 – 18:00 (13:00 - 14:00 обід)</li>
-            <li>Субота: Зачинено</li>
-            <li>Неділя: 09:00 – 15:00</li>
-        </ul>
+        <h1>Останні новини</h1>
+        <br>
+        <div id="news"></div>
+
+        <script>
+          fetch('ФАЙЛ НОВИН/news.json')
+            .then(response => response.json())
+            .then(data => {
+              const container = document.getElementById('news');
+              data.forEach(item => {
+                const block = document.createElement('div');
+                block.innerHTML = `<h3>${item.title}</h3><p>${item.content}</p><small>${item.date}</small>`;
+                container.appendChild(block);
+              });
+            })
+            .catch(error => {
+              console.error("Помилка:", error);
+            });
+        </script>
     </main>
     <br>
     <footer>
@@ -79,29 +79,6 @@
         <span>вулиця Незалежності, 22, Маневичі, Волинська область, 44600</span>
     </footer>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function () {
-        let currentIndex = 0;
-        const slides = $('.slide');
-        const slideCount = slides.length;
-
-        function showSlide(index) {
-            slides.removeClass('active');
-            slides.eq(index).addClass('active');
-        }
-
-        function nextSlide() {
-            currentIndex = (currentIndex + 1) % slideCount;
-            showSlide(currentIndex);
-        }
-
-        // Початковий показ
-        showSlide(currentIndex);
-
-        // Автоматичне переключення кожні 5 сек
-        setInterval(nextSlide, 5000);
-        });
-    </script>
     <script href="script.js"></script>
 </body>
 </html>

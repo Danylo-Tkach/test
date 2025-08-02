@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вікторина | Маневицький краєзнавчий музей</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/exhibits.css">
+    <link rel="icon" href="images/icon.png">
+</head>
+<body>
+    <header>
+        <img src="images/завантаження.png" style="width: 97px; height:97px; margin-right: 10px;">
+        <h2>
+            Маневицький<br>
+            краєзнавчий<br>
+            музей
+        </h2>
+        <ul class="menu-header">
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="about us.html">Про музей</a></li>
+            <li style="text-decoration: underline;"><a href="test.html">Вікторина</a></li>
+            <li><a href="boat.html">Човен-довбанка</a></li>
+            <li><a href="register.html">Забронювати екскурсію</a></li>
+            <li><a href="news.html">Новини</a></li>
+        </ul>
+    </header>
+    <br>
+    <ul class="menu-phone">
+        <li><a href="index.html">Головна</a></li>
+        <li><a href="about us.html">Про музей</a></li>
+        <li style="text-decoration: underline;"><a href="test.html">Вікторина</a></li>
+        <li><a href="boat.html">Човен-довбанка</a></li>
+        <li><a href="register.html">Забронювати екскурсію</a></li>
+        <li><a href="news.html">Новини</a></li>
+     </ul>
+    <br>
+    <main>
+        <div class="quiz-container">
+        <h2>Вікторина</h2>
+
+        <form id="quizForm">
+            <div class="question">
+            <p>1. Столиця України?</p>
+            <label><input type="radio" name="q1" value="0"> Львів</label>
+            <label><input type="radio" name="q1" value="1"> Київ</label>
+            <label><input type="radio" name="q1" value="0"> Харків</label>
+            </div>
+
+            <div class="question">
+            <p>2. Скільки в 1 годині хвилин?</p>
+            <label><input type="radio" name="q2" value="1"> 60</label>
+            <label><input type="radio" name="q2" value="0"> 100</label>
+            <label><input type="radio" name="q2" value="0"> 90</label>
+            </div>
+
+            <div class="question">
+            <p>3. Який рік зараз?</p>
+            <label><input type="radio" name="q3" value="0"> 2024</label>
+            <label><input type="radio" name="q3" value="1"> 2025</label>
+            <label><input type="radio" name="q3" value="0"> 2023</label>
+            </div>
+
+            <div class="question">
+            <p>4. Найбільша планета Сонячної системи?</p>
+            <label><input type="radio" name="q4" value="0"> Земля</label>
+            <label><input type="radio" name="q4" value="1"> Юпітер</label>
+            <label><input type="radio" name="q4" value="0"> Марс</label>
+            </div>
+
+            <div class="question">
+            <p>5. Колір жовтка яйця?</p>
+            <label><input type="radio" name="q5" value="0"> Білий</label>
+            <label><input type="radio" name="q5" value="0"> Синій</label>
+            <label><input type="radio" name="q5" value="1"> Жовтий</label>
+            </div>
+
+            <button type="button" onclick="checkAnswers()">Перевірити</button>
+        </form>
+        <div id="result"></div>
+        </div>
+    </main>
+    <br>
+    <footer>
+        <br>
+        <span style="font-weight:600;">КОНТАКТИ</span>
+        <br><br>
+        <b>+38068-00-00-000</b>
+        <br><br>
+        <a href="https://www.facebook.com/groups/263399481555217/"><img src="images/icons8-facebook-30.png"></a>
+        <br><br>
+        <hr>
+        <span style="font-weight:600;">МИ НА КАРТІ</span>
+        <br>
+        <br>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2713.014680128683!2d25.528227412215514!3d51.28676722667944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47267659f9b025b3%3A0xb65831643ef3b0f1!2z0JzQsNC90LXQstC40YbRjNC60LjQuSDQutGA0LDRlNC30L3QsNCy0YfQuNC5INC80YPQt9C10Lk!5e1!3m2!1suk!2sua!4v1752763609263!5m2!1suk!2sua" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>    
+        <br><br>
+        <a href="https://maps.app.goo.gl/osGiHUyTX9TN6Qkw8"><img src="images/qr-code.png" style="width: 200px;"></a>
+        <br>
+        <br>
+        <span>(Відскануйте / натисніть щоб перейти в Google maps)</span>
+        <br><br>
+        <span>вулиця Незалежності, 22, Маневичі, Волинська область, 44600</span>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script href="script.js"></script>
+    <script>
+        function checkAnswers() {
+            const form = document.getElementById('quizForm');
+            const formData = new FormData(form);
+            let score = 0;
+
+            for (let [key, value] of formData.entries()) {
+            if (value === "1") score++;
+            }
+
+            const resultDiv = document.getElementById('result');
+            resultDiv.textContent = `Твій результат: ${score} з 5 правильних`;
+        }
+    </script>
+</body>
+</html>

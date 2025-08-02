@@ -1,0 +1,11 @@
+h1 {
+    text-align: center;
+}
+#news {
+    margin-left: 30%;
+}
+@media (max-width: 767px) {
+  #news {
+    margin-left: 1%;
+  }
+}

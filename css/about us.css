@@ -1,0 +1,16 @@
+main img {
+    width: 300px;
+}
+main {
+    text-align: center;
+    width: 1000px;
+    font-size: 20px;
+    height:500px;
+    animation: ShowMain 0.8s ease-out forwards;
+}
+@media (max-width: 767px) {
+    main {
+        height:1250px;
+        width: 300px;
+    }
+}
